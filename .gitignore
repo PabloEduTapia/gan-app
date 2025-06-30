@@ -1,0 +1,17 @@
+# Ignorar entorno virtual
+.venv/
+venv/
+__pycache__/
+
+# Dataset pesado (no subir imágenes de entrenamiento)
+dataset/
+muestras/
+
+# Modelos grandes locales (solo subir uno si querés usarlo en producción)
+modelos/
+modelo_gan.h5
+
+# Archivos temporales o binarios
+*.pyc
+*.pkl
+.DS_Store

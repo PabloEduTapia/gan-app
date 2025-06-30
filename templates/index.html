@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>GAN Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+    body {
+      font-family: 'Rubik', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-black via-gray-900 to-black text-white flex flex-col items-center min-h-screen py-10">
+  <h1 class="text-4xl font-bold mb-8 tracking-wide">🧠 GAN Generator</h1>
+
+  <div id="preview" class="mb-6 transition-transform duration-500 scale-100"></div>
+
+  <button onclick="generar()" class="bg-green-500 hover:bg-green-600 active:scale-95 transform transition-all text-white font-bold py-3 px-6 rounded-full shadow-lg mb-8">
+    🚀 Generar nueva imagen
+  </button>
+
+  <div id="galeria" class="flex flex-wrap justify-center gap-4 px-4 w-full max-w-6xl"></div>
+
+  <script>
+    function generar() {
+      const nueva = document.createElement('img');
+      nueva.src = '/generate?' + new Date().getTime();
+      nueva.className = 'w-[384px] h-auto border-4 border-green-400 rounded-xl shadow-xl transition-all duration-700 scale-100 hover:scale-105 hover:shadow-green-400';
+
+      const preview = document.getElementById('preview');
+      preview.innerHTML = '';
+      preview.appendChild(nueva);
+
+      // Pasar a galería y achicar con efecto
+      setTimeout(() => {
+        nueva.className = 'w-40 h-auto border-2 border-white rounded-lg shadow-md transition-all duration-700 hover:scale-110 hover:shadow-white';
+        preview.removeChild(nueva);
+        document.getElementById('galeria').prepend(nueva);
+      }, 1500);
+    }
+
+    // Generar inicial
+    generar();
+  </script>
+</body>
+</html>
