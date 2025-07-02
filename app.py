@@ -7,7 +7,7 @@ from io import BytesIO
 app = Flask(__name__)
 
 # Cargar modelo entrenado desde Colab
-generator = load_model("modelo_gan_colab.keras")
+generator = load_model("modelo_gan_colab.keras", compile=False)
 latent_dim = 100  # igual al usado en Colab
 
 @app.route('/')
